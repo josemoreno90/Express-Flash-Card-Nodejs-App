@@ -1,0 +1,22 @@
+{
+  "name": "express-flash-card-nodejs-app",
+  "version": "1.0.0",
+  "description": "A simple flash card app built with nodejs using express and pug",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josemoreno90/Express-Flash-Card-Nodejs-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josemoreno90/Express-Flash-Card-Nodejs-App/issues"
+  },
+  "homepage": "https://github.com/josemoreno90/Express-Flash-Card-Nodejs-App#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
