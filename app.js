@@ -2,8 +2,10 @@ const express = require('express');
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 app.get('/', (req,res,next) => {
-  res.send("Welcome to our page");
+  res.render('index');
 })
 
 app.listen(3000);
