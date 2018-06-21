@@ -10,6 +10,32 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(cookieParser())
 app.set('view engine', 'pug');
 
+//running middleware for specific routes
+app.use('/one', (req, res, next) => {
+  // We are able to add to the req object a message and it carries to next middlewares
+  req.message = "This message made it!";
+  console.log('the only one')
+  next();
+})
+
+//middleware example runs everytime we make a request
+app.use((req, res, next) => {
+  console.log("1");
+  console.log(req.message)
+  next();
+})
+
+app.use((req, res, next) => {
+  console.log("2");
+  console.log(req.message)
+  next();
+})
+
+
+
+
+
+
 app.get('/', (req,res) => {
   const name = req.cookies.username;
   if (name) {
