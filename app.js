@@ -8,48 +8,12 @@ app.use(bodyParser.urlencoded({ extended:false }));
 app.use(cookieParser())
 app.set('view engine', 'pug');
 
-//middleware example runs everytime we make a request
-app.use((req, res, next) => {
-  console.log("hello");
-  next();
-})
-app.use((req, res, next) => {
-  console.log("world");
-  next();
-})
+const mainRoutes = require('./routes');
+const cardRoutes = require('./routes/cards')
 
-app.get('/', (req,res) => {
-  const name = req.cookies.username;
-  if (name) {
-    res.render('index', { name });
-  } else {
-    res.redirect('/hello');
-  }
-})
+app.use(mainRoutes)
+app.use('/cards', cardRoutes);
 
-app.get('/cards', (req,res) => {
-  const hint = "He bears his name"
-  res.render('card', {prompt: "Who is buried in Grant's Tomb?", hint});
-})
-
-app.get('/hello', (req,res) => {
-  const name = req.cookies.username;
-  if (name) {
-    res.render('/');
-  } else {
-    res.render('hello');
-  }
-})
-
-app.post('/hello', (req,res) => {
-  res.cookie('username', req.body.username)
-  res.redirect('/');
-})
-
-app.post('/goodbye', (req, res) => {
-  res.clearCookie('username');
-  res.redirect('/hello')
-})
 
 app.use((req,res,next) => {
   const err = new Error('Not Found')
