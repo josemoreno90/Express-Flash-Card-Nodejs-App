@@ -13,6 +13,11 @@ router.get('/', (req, res) => {
 router.get('/:id', (req,res) => {
   const {side} = req.query;
   const { id } = req.params;
+
+  if ( !side ) {
+    res.redirect(`/cards/${id}?side=question`)
+  }
+
   const text = cards[id][side];
   const { hint } = cards[id];
 
